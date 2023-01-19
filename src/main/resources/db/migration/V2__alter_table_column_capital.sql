@@ -1,0 +1,1 @@
+alter table pais change capital capital varchar(100);
