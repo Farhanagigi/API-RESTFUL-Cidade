@@ -1,14 +1,15 @@
 package backend.challenge.developer.api.controller;
 
 import backend.challenge.developer.api.pais.DadosCriacaoPais;
+import backend.challenge.developer.api.pais.DadosListagemPais;
 import backend.challenge.developer.api.pais.Pais_table;
 import backend.challenge.developer.api.pais.Paisrepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/paises")
@@ -24,5 +25,13 @@ public class Paisescontroller {
     {
         repository.save(new Pais_table(dados));
     }
+
+    @GetMapping
+    public Page<DadosListagemPais> listar(@PageableDefault(size = 10,sort={"nome","id"})Pageable paginacao){
+//        return repository.findAllByActivoTrue(paginacao).map(DadosListagemPais::new);
+      return repository.findAll(paginacao).map(DadosListagemPais::new);
+    }
+
+
 
 }
