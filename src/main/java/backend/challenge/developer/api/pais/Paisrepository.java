@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface Paisrepository extends JpaRepository<Pais_table,Long> {
 
 //    Listar dados de acordo com o status quando for removido apenas tera activo como false mas nao ira mostrar na listagem
-//    Page<Pais_table> findAllByActivoTrue(Pageable paginacao);
+    Page<Pais_table> findAllByActivoTrue(Pageable paginacao);
 }

@@ -25,8 +25,8 @@ public class Paisescontroller {
 
     @GetMapping
     public Page<DadosListagemPais> listar(@PageableDefault(size = 10,sort={"nome","id"})Pageable paginacao){
-//        return repository.findAllByActivoTrue(paginacao).map(DadosListagemPais::new);
-      return repository.findAll(paginacao).map(DadosListagemPais::new);
+        return repository.findAllByActivoTrue(paginacao).map(DadosListagemPais::new);
+//      return repository.findAll(paginacao).map(DadosListagemPais::new);
     }
 
     @PutMapping
@@ -35,6 +35,15 @@ public class Paisescontroller {
     {
         var pais= repository.getReferenceById(dados.id());
         pais.ActualizarInformacao(dados);
+    }
+
+    //apenas ira remover o item da lista assim ira manter os dados da pessoa que cadastrou o pais
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void deletardados(@PathVariable long id)
+    {
+        var paisdelete= repository.getReferenceById(id);
+        paisdelete.excluir();
     }
 
 

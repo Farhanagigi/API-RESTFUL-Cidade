@@ -31,11 +31,11 @@ public class Pais_table {
     private String area;
 
     //Listagem de acordo com status
-//    private boolean activo;
+    private boolean activo;
 
 
     public Pais_table(DadosCriacaoPais dados) {
-//        this.activo=true;
+        this.activo=true;
         this.nome=dados.nome();
         this.capital=dados.capital();
         this.regiao= dados.regiao();
@@ -66,5 +66,10 @@ public class Pais_table {
         {
             this.area=dados.area();
         }
+    }
+
+    public void excluir()
+    {
+        this.activo=false;
     }
 }
