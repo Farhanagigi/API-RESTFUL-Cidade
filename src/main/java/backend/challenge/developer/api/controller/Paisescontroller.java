@@ -1,9 +1,6 @@
 package backend.challenge.developer.api.controller;
 
-import backend.challenge.developer.api.pais.DadosCriacaoPais;
-import backend.challenge.developer.api.pais.DadosListagemPais;
-import backend.challenge.developer.api.pais.Pais_table;
-import backend.challenge.developer.api.pais.Paisrepository;
+import backend.challenge.developer.api.pais.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,6 +27,14 @@ public class Paisescontroller {
     public Page<DadosListagemPais> listar(@PageableDefault(size = 10,sort={"nome","id"})Pageable paginacao){
 //        return repository.findAllByActivoTrue(paginacao).map(DadosListagemPais::new);
       return repository.findAll(paginacao).map(DadosListagemPais::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void actualizardados(@RequestBody DadosActualizarPais dados)
+    {
+        var pais= repository.getReferenceById(dados.id());
+        pais.ActualizarInformacao(dados);
     }
 
 

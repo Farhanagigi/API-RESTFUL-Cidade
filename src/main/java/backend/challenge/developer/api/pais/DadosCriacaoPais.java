@@ -1,10 +1,10 @@
 package backend.challenge.developer.api.pais;
 
 public record DadosCriacaoPais(
-    String Nome,
-    String Capital,
-    String Regiao,
-    SUBREGIAO Subregiao,
-    String Area
+    String nome,
+    String capital,
+    String regiao,
+    SUBREGIAO subregiao,
+    String area
 ) {
 }

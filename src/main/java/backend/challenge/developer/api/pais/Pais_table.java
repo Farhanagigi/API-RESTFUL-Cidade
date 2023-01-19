@@ -36,11 +36,35 @@ public class Pais_table {
 
     public Pais_table(DadosCriacaoPais dados) {
 //        this.activo=true;
-        this.nome=dados.Nome();
-        this.capital=dados.Capital();
-        this.regiao= dados.Regiao();
-        this.subregiao=dados.Subregiao();
-        this.area= dados.Area();
+        this.nome=dados.nome();
+        this.capital=dados.capital();
+        this.regiao= dados.regiao();
+        this.subregiao=dados.subregiao();
+        this.area= dados.area();
 
+    }
+
+    //acutalizar pais de acordo com cada propriedade
+    public void ActualizarInformacao(DadosActualizarPais dados) {
+        if(dados.nome()!=null)
+        {
+            this.nome= dados.nome();
+        }
+        if(dados.capital()!=null)
+        {
+            this.capital=dados.capital();
+        }
+        if(dados.regiao()!=null)
+        {
+            this.regiao=dados.regiao();
+        }
+        if(dados.subregiao()!=null)
+        {
+            this.subregiao=dados.subregiao();
+        }
+        if(dados.area()!=null)
+        {
+            this.area=dados.area();
+        }
     }
 }
