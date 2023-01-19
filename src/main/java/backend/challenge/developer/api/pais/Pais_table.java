@@ -21,22 +21,26 @@ public class Pais_table {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String Nome;
-    private String Capital;
-    private String Regiao;
+    private String nome;
+    private String capital;
+    private String regiao;
 
     @Enumerated(EnumType.STRING)
-    private SUBREGIAO Subregiao;
+    private SUBREGIAO subregiao;
 
-    private String Area;
+    private String area;
+
+    //Listagem de acordo com status
+//    private boolean activo;
 
 
     public Pais_table(DadosCriacaoPais dados) {
-        this.Nome=dados.Nome();
-        this.Capital=dados.Capital();
-        this.Regiao= dados.Regiao();
-        this.Subregiao=dados.Subregiao();
-        this.Area= dados.Area();
+//        this.activo=true;
+        this.nome=dados.Nome();
+        this.capital=dados.Capital();
+        this.regiao= dados.Regiao();
+        this.subregiao=dados.Subregiao();
+        this.area= dados.Area();
 
     }
 }
